@@ -25,6 +25,7 @@ RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d && \
         libnspr4 \
         libnss3 \
         libstdc++6 \
+        libuser \
         libxml2 \
         libxss1 \
         libxtst6 \
@@ -80,7 +81,6 @@ RUN echo "$REPO_URL" | tee /etc/apt/sources.list.d/ds.list && \
     rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen en_US.UTF-8
-RUN apt-get -yq install libuser
 RUN groupmod -g 800 ds
 RUN usermod -u 800 ds
 
