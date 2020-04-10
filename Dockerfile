@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 LABEL maintainer Ascensio System SIA <support@onlyoffice.com>
 
-ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive
+ENV LANG=de_DE.UTF-8 LANGUAGE=de_DE:de LC_ALL=de_DE.UTF-8 DEBIAN_FRONTEND=noninteractive
 
 ARG ONLYOFFICE_VALUE=onlyoffice
 
@@ -10,6 +10,7 @@ RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d && \
     apt-get -yq install wget apt-transport-https gnupg locales && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0x8320ca65cb2de8e5 && \
     locale-gen en_US.UTF-8 && \
+    locale-gen de_DE.UTF-8 && \
     apt-get -yq install \
         adduser \
         apt-utils \
