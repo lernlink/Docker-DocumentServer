@@ -26,6 +26,7 @@ RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d && \
         libnspr4 \
         libnss3 \
         libstdc++6 \
+        libuser \
         libxml2 \
         libxss1 \
         libxtst6 \
