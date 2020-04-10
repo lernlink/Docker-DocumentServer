@@ -60,9 +60,6 @@ RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d && \
     service nginx stop && \
     rm -rf /var/lib/apt/lists/*
 
-RUN groupmod -g 800 ds
-RUN usermod -u 800 ds
-
 COPY config /app/ds/setup/config/
 COPY run-document-server.sh /app/ds/run-document-server.sh
 
@@ -83,6 +80,9 @@ RUN echo "$REPO_URL" | tee /etc/apt/sources.list.d/ds.list && \
     chmod 755 /app/ds/*.sh && \
     rm -rf /var/log/$COMPANY_NAME && \
     rm -rf /var/lib/apt/lists/*
+
+RUN groupmod -g 800 ds
+RUN usermod -u 800 ds
 
 VOLUME /var/log/$COMPANY_NAME /var/lib/$COMPANY_NAME /var/www/$COMPANY_NAME/Data /var/lib/postgresql /var/lib/rabbitmq /var/lib/redis /usr/share/fonts/truetype/custom
 
